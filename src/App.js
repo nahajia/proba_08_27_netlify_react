@@ -3,6 +3,7 @@ import "./App.css";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [filmek, setFilmek] = useState([]);
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -16,6 +17,20 @@ function App() {
     };
 
     loadMovies();
+
+    const loadFilmek = async () => {
+      try {
+        const response = await fetch("https://nodejs102.dszcbaross.edu.hu/film");
+        const data = await response.json();
+        setFilmek(data); // itt van a filmek listája
+        console.log(JSON.stringify(data))
+      } catch (error) {
+        console.error("Hiba történt:", error);
+      }
+    };
+
+    loadFilmek();
+
   }, []);
 
   return (
@@ -27,6 +42,12 @@ function App() {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>{movie.title} ({movie.releaseYear})</li>
+        ))}
+      </ul>
+      <hr></hr>
+      <ul>
+        {filmek.map((movie) => (
+          <li key={movie.film_id}>{movie.film_cim} ({movie.film_ev})</li>
         ))}
       </ul>
     </div>
