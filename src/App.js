@@ -45,6 +45,14 @@ function App() {
   ]
 
   const [tombKevert, setTombKevert] = useState([]);
+  const [mindenKitoltve, setMindenKitoltve] = useState(false);
+  const [message, setMessage] = useState("");
+  const [valasztasok, setValasztasok] = useState([]); // itt tároljuk a select-ek értékeit
+  const [ertek1,setErtek1]=useState(0);
+  const [ertek2,setErtek2]=useState(0);
+  const [ertek3,setErtek3]=useState(0);
+  const [ertek4,setErtek4]=useState(0);
+  const [ertek5,setErtek5]=useState(0);  
 
   useEffect(() => {
     let tombSeged=[...tomb];
@@ -61,45 +69,100 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
+  const handleClick = () => {
+    if (valasztasok.length!=30){
+        setMessage("Minden mezőt ki kell tölteni!");
+        return;
+    }
+    setMindenKitoltve(true)
+    setMessage("Sikeres kitöltés!");
+  };
+
+  const handleSelectChange = (sorszam, selectedOption) => {
+    //alert(selectedOption.value)
+     setValasztasok((prev) => {
+    // Ellenőrizzük, van-e már elem a tömbben ezzel a sorszámmal
+    const existingIndex = prev.findIndex(item => item.sorszam === sorszam);
+    if (existingIndex >= 0) {
+      // Ha van, frissítjük az értéket
+      const updated = [...prev];
+      updated[existingIndex] = { sorszam, valasztas: selectedOption ? selectedOption.value : null };
+      return updated;
+    } else {
+      // Ha nincs, hozzáadjuk az új objektumot
+      return [...prev, { sorszam, valasztas: selectedOption ? selectedOption.value : null }];
+    }})
+
+      if (sorszam%5==1)
+        setErtek1(ertek1+selectedOption.value);
+      else if (sorszam%5==2)
+        setErtek2(ertek2+selectedOption.value);
+      else if (sorszam%5==3)
+        setErtek3(ertek3+selectedOption.value);
+      else if (sorszam%5==4)
+        setErtek4(ertek4+selectedOption.value);
+      else if (sorszam%5==0)
+        setErtek5(ertek5+selectedOption.value);
+
+    };
   return (
     <div className="App">
       <h1>Pályaorientációs kérdőív</h1>
-      <h3>Ha pályaválasztás előtt áll, érdemes
-tisztáznia, hogy milyen képességekkel rendelkezik. A képességek erősen befolyásolják, hogy
-pályáján, foglalkozásának gyakorlásánál mennyire sikeres. Az alábbi kérdőív ebben jelenthet
-segítséget: kitöltésével tájékozódhat a képességeiről, melyek jelentik az erősségeit és melyek
-azok, amelyekben gyengébb.</h3>
+      <h4>Ha pályaválasztás előtt állsz, érdemes
+tisztázni, hogy milyen képességekkel rendelkezel. A képességek erősen befolyásolják, hogy
+pályádon, egy foglalkozás gyakorlásánál mennyire leszel sikeres. Az alábbi kérdőív ebben jelenthet
+segítséget: kitöltésével tájékozódhatsz a képességeidről, melyek jelentik az erősségeidet és melyek
+azok, amelyekben gyengébb vagy.</h4>
+      <h5>Mennyire megy Neked? 1-től 5-ig válassz!!!</h5>
 
      
     
-<ol style={{ listStyleType: 'decimal', padding: 0 }}>
-  {tombKevert.map((elem, index) => (
-    <li 
-      key={elem.sorszam} 
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap', // mobilon a Select külön sorba kerül
-        alignItems: 'flex-start',
-        marginBottom: '1rem'
-      }}
-    >
-      <div style={{ display: 'flex', flex: '1 1 200px', alignItems: 'flex-start', marginRight: '1rem' }}>
-        <span style={{ flex: '0 0 30px', fontWeight: 'bold', marginRight: '0.5rem' }}>
-          {index + 1}.
-        </span>
-        <span style={{ flex: '1 1 300px' }}>
-          {elem.kijelentes}
-        </span>
-      </div>
-      <div style={{ flex: '1 1 150px' }}>
-        <Select options={options} isSearchable={false} placeholder="Válassz..." />
-      </div>
-    </li>
-  ))}
-</ol>
+      <ol style={{ listStyleType: 'decimal', padding: 0 }}>
+        {tombKevert.map((elem, index) => (
+          <li 
+            key={elem.sorszam} 
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap', // mobilon a Select külön sorba kerül
+              alignItems: 'flex-start',
+              marginBottom: '1rem'
+            }}
+          >
+            <div style={{ display: 'flex', flex: '1 1 200px', alignItems: 'flex-start', marginRight: '1rem' }}>
+              <span style={{ flex: '0 0 30px', fontWeight: 'bold', marginRight: '0.5rem' }}>
+                {index + 1}.
+              </span>
+              <span style={{ flex: '1 1 300px' }}>
+                {elem.kijelentes}
+              </span>
+            </div>
+            <div style={{ flex: '1 1 150px' }}>
+              <Select
+                options={options}
+                isSearchable={false}
+                placeholder="Válassz..."
+                onChange={(selectedOption) => handleSelectChange(elem.sorszam, selectedOption)}
+              />
+            </div>
+          </li>
+        ))}
+      </ol>
 
+     <div style={{ padding: "2rem" }}>
+        <button onClick={handleClick}>Kiértékelés</button>
+        {message &&  <p style={{ marginTop: "1rem", color: "green" }}>{message}</p>}
+        {mindenKitoltve && <div>
 
+           <div>Kézügyesség: {ertek1}</div>
+      <div>Matematikai képesség: {ertek2}</div>
+      <div>Problémamegoldó képesség: {ertek3}</div>
+      <div>Együttműködő képesség: {ertek4}</div>
+      <div>Kommunikációs képesség: {ertek5}</div>
+         </div>}
+        </div>
+
+    
     </div>
   );
 }
