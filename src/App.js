@@ -91,11 +91,12 @@ azok, amelyekben gyengébb.</h3>
         {elem.kijelentes}
       </span>
       <div style={{ flex: '1 1 150px' }}>
-        <Select options={options} />
+        <Select options={options} isSearchable={false} />
       </div>
     </li>
   ))}
 </ol>
+
 
 
     </div>
