@@ -25,7 +25,7 @@ function App() {
   { "sorszam": 11, "kijelentes": "Cérna befűzése tűbe.", "tipus": "kezugyesseg" },
   { "sorszam": 12, "kijelentes": "Családi költségvetés - bevételek, kiadások - tervezése.", "tipus": "matematikai" },
   { "sorszam": 13, "kijelentes": "Logikai fejtörők megoldása.", "tipus": "problemamegoldo" },
-  { "sorszam": 14, "kijelentes": "Csoportban való munkavégzés/együttműködés a feladatok megoldásában.", "tipus": "egyuttmukodo" },
+  { "sorszam": 14, "kijelentes": "Csoportban való munkavégzés/ együttműködés a feladatok megoldásában.", "tipus": "egyuttmukodo" },
   { "sorszam": 15, "kijelentes": "Hallott szöveg gyors felfogása.", "tipus": "kommunikacios" },
   { "sorszam": 16, "kijelentes": "Célba dobni.", "tipus": "kezugyesseg" },
   { "sorszam": 17, "kijelentes": "Adatokkal, számokkal való munkavégzés.", "tipus": "matematikai" },
