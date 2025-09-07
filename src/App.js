@@ -133,7 +133,7 @@ azok, amelyekben gyengébb vagy.</h4>
               <span style={{ flex: '0 0 30px', fontWeight: 'bold', marginRight: '0.5rem' }}>
                 {index + 1}.
               </span>
-              <span style={{ flex: '1 1 300px' }}>
+              <span style={{ flex: '1 1 400px' }}>
                 {elem.kijelentes}
               </span>
             </div>
