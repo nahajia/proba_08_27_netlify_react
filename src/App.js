@@ -119,43 +119,33 @@ azok, amelyekben gyengébb vagy.</h4>
     
       <ol style={{ listStyleType: 'decimal', padding: 0 }}>
         {tombKevert.map((elem, index) => (
-<li 
-  key={elem.sorszam} 
-  style={{
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    marginBottom: '1rem'
-  }}
->
-  <div style={{
-    display: 'flex',
-    flex: '1 1 200px',
-    alignItems: 'flex-start',
-    marginRight: '1rem',
-    flexDirection: window.innerWidth < 600 ? 'column' : 'row' // mobilon oszlop
-  }}>
-    <span style={{ flex: '0 0 30px', fontWeight: 'bold', marginRight: '0.5rem' }}>
-      {index + 1}.
-    </span>
-    <span style={{ flex: '1 1 400px' }}>
-      {elem.kijelentes}
-    </span>
-  </div>
-  <div style={{
-    flex: '1 1 150px',
-    width: window.innerWidth < 600 ? '100%' : 'auto', // mobilon teljes szélesség
-    marginTop: window.innerWidth < 600 ? '0.5rem' : '0' // kis távolság mobilon
-  }}>
-    <Select
-      options={options}
-      isSearchable={false}
-      placeholder="Válassz..."
-      onChange={(selectedOption) => handleSelectChange(elem.sorszam, selectedOption)}
-    />
-  </div>
-</li>
+          <li 
+            key={elem.sorszam} 
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap', // mobilon a Select külön sorba kerül
+              alignItems: 'flex-start',
+              marginBottom: '1rem'
+            }}
+          >
+            <div style={{ display: 'flex', flex: '1 1 200px', alignItems: 'flex-start', marginRight: '1rem' }}>
+              <span style={{ flex: '0 0 30px', fontWeight: 'bold', marginRight: '0.5rem' }}>
+                {index + 1}.
+              </span>
+              <span style={{ flex: '1 1 400px' }}>
+                {elem.kijelentes}
+              </span>
+            </div>
+            <div style={{ flex: '1 1 150px' }}>
+              <Select
+                options={options}
+                isSearchable={false}
+                placeholder="Válassz..."
+                onChange={(selectedOption) => handleSelectChange(elem.sorszam, selectedOption)}
+              />
+            </div>
+          </li>
         ))}
       </ol>
 
