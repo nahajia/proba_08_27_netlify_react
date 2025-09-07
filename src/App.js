@@ -79,24 +79,25 @@ azok, amelyekben gyengébb.</h3>
       style={{
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: '1rem',
-        flexWrap: 'wrap' // mobilon egymás alá
+        flexWrap: 'wrap', // mobilon a Select külön sorba kerül
+        alignItems: 'flex-start',
+        marginBottom: '1rem'
       }}
     >
-      <span style={{ flex: '0 0 30px', fontWeight: 'bold', marginRight: '0.5rem' }}>
-        {index + 1}.
-      </span>
-      <span style={{ flex: '1 1 200px', marginRight: '1rem' }}>
-        {elem.kijelentes}
-      </span>
+      <div style={{ display: 'flex', flex: '1 1 200px', alignItems: 'flex-start', marginRight: '1rem' }}>
+        <span style={{ flex: '0 0 30px', fontWeight: 'bold', marginRight: '0.5rem' }}>
+          {index + 1}.
+        </span>
+        <span style={{ flex: '1 1 auto' }}>
+          {elem.kijelentes}
+        </span>
+      </div>
       <div style={{ flex: '1 1 150px' }}>
-        <Select options={options} isSearchable={false} />
+        <Select options={options} isSearchable={false} placeholder="Válassz..." />
       </div>
     </li>
   ))}
 </ol>
-
 
 
     </div>
