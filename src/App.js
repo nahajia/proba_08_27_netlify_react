@@ -11,7 +11,7 @@ function App() {
   { value: 4, label: '4-jól' },
   { value: 5, label: '5-kiválóan' },
 ]
-  const [tomb, setTomb] = useState([
+  const tomb=[
   { "sorszam": 1, "kijelentes": "Kéziszerszámok használata.", "tipus": "kezugyesseg" },
   { "sorszam": 2, "kijelentes": "A visszajáró pénz gyors kiszámolása.", "tipus": "matematikai" },
   { "sorszam": 3, "kijelentes": "A munkavégzés során felmerülő problémák önálló megoldása.", "tipus": "problemamegoldo" },
@@ -42,8 +42,8 @@ function App() {
   { "sorszam": 28, "kijelentes": "Ugyanannak a problémának több szempont szerinti megközelítése.", "tipus": "problemamegoldo" },
   { "sorszam": 29, "kijelentes": "Jó munkahelyi légkör kialakítása.", "tipus": "egyuttmukodo" },
   { "sorszam": 30, "kijelentes": "Mondatok tiszta, érthető kiejtése.", "tipus": "kommunikacios" }
-]
-);
+  ]
+
   const [tombKevert, setTombKevert] = useState([]);
 
   useEffect(() => {
