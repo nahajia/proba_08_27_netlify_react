@@ -70,7 +70,7 @@ function App() {
   },[]);
 
   const handleClick = () => {
-    if (valasztasok.length!=30){
+    if (valasztasok.length!==30){
         setMessage("Minden mezőt ki kell tölteni!");
         return;
     }
@@ -93,15 +93,15 @@ function App() {
       return [...prev, { sorszam, valasztas: selectedOption ? selectedOption.value : null }];
     }})
 
-      if (sorszam%5==1)
+      if (sorszam%5===1)
         setErtek1(ertek1+selectedOption.value);
-      else if (sorszam%5==2)
+      else if (sorszam%5===2)
         setErtek2(ertek2+selectedOption.value);
-      else if (sorszam%5==3)
+      else if (sorszam%5===3)
         setErtek3(ertek3+selectedOption.value);
-      else if (sorszam%5==4)
+      else if (sorszam%5===4)
         setErtek4(ertek4+selectedOption.value);
-      else if (sorszam%5==0)
+      else if (sorszam%5===0)
         setErtek5(ertek5+selectedOption.value);
 
     };
