@@ -47,7 +47,7 @@ function App() {
   const [tombKevert, setTombKevert] = useState([]);
 
   useEffect(() => {
-    let tombSeged=tomb;
+    let tombSeged=[...tomb];
     for (let i = 0; i < 100; i++) {
       let rnd1=Math.floor(Math.random() * tombSeged.length)
       let rnd2=Math.floor(Math.random() * tombSeged.length)
@@ -57,7 +57,9 @@ function App() {
       
     }
     setTombKevert(tombSeged)
-  }, []);
+     // <<< Ez a sor tiltja le az ESLint figyelmeztetést a következő sorra
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   return (
     <div className="App">
