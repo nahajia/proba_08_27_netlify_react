@@ -84,7 +84,7 @@ azok, amelyekben gyengébb.</h3>
         marginBottom: '1rem'
       }}
     >
-      <div style={{ display: 'flex', flex: '1 1 200px', alignItems: 'flex-start', marginRight: '1rem' }}>
+      <div style={{ display: 'flex', flex: '1 1 300px', alignItems: 'flex-start', marginRight: '1rem' }}>
         <span style={{ flex: '0 0 30px', fontWeight: 'bold', marginRight: '0.5rem' }}>
           {index + 1}.
         </span>
